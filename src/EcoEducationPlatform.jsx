@@ -191,7 +191,7 @@ const EcoEducationPlatform = () => {
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="lg:hidden p-2 hover:bg-white/10 rounded-md"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6 text-teal-600" /> : <Menu className="w-6 h-6 text-teal-600" />}
+              {mobileMenuOpen ? <X className="w-6 h-6 text-amber-50" /> : <Menu className="w-6 h-6 text-amber-50s" />}
             </button>
           </div>
         </div>
@@ -209,7 +209,7 @@ const EcoEducationPlatform = () => {
                       setActiveSection(item.id);
                       setMobileMenuOpen(false);
                     }}
-                    className={`flex items-center space-x-2 px-3 py-2 rounded-md transition-colors text-teal-600 text-sm ${
+                    className={`flex items-center space-x-2 px-3 py-2 rounded-md transition-colors text-amber-50 text-sm ${
                       activeSection === item.id ? 'bg-white/20' : 'hover:bg-white/10'
                     }`}
                   >
@@ -1033,7 +1033,7 @@ const EcoEducationPlatform = () => {
         </motion.div>
         <motion.div
           key={leaf.id}
-          initial={{ y: -50, x: 450 , opacity: 1 }}
+          initial={{ y: -50, x: "30vw" , opacity: 1 }}
           animate={{ y: "110vh", opacity: 0 }}
           transition={{ duration: 8, ease: "easeIn" }}
           className="absolute text-2xl"
@@ -1042,7 +1042,7 @@ const EcoEducationPlatform = () => {
         </motion.div>
         <motion.div
           key={leaf.id}
-          initial={{ y: -50, x:950 , opacity: 1 }}
+          initial={{ y: -50, x:"60vw" , opacity: 1 }}
           animate={{ y: "110vh", opacity: 0 }}
           transition={{ duration: 8, ease: "easeIn" }}
           className="absolute text-2xl"
@@ -1051,7 +1051,7 @@ const EcoEducationPlatform = () => {
         </motion.div>
         <motion.div
           key={leaf.id}
-          initial={{ y: -50, x: 1400, opacity: 1 }}
+          initial={{ y: -50, x: "90vw", opacity: 1 }}
           animate={{ y: "110vh", opacity: 0 }}
           transition={{ duration: 8, ease: "easeIn" }}
           className="absolute text-2xl"
