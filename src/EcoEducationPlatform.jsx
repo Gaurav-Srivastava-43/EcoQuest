@@ -147,7 +147,7 @@ const EcoEducationPlatform = () => {
                     setActiveSection(item.id);
                     setMobileMenuOpen(false);
                   }}
-                  className={`flex items-center space-x-1 px-3 py-2 rounded-md transition-colors text-black text-sm ${
+                  className={`flex items-center space-x-1 px-3 py-2 rounded-md transition-colors bg-amber-50 text-teal-600 text-sm ${
                     activeSection === item.id ? 'active:bg-teal-200' : 'hover:opacity-50'
                   }`}
                 >
@@ -409,7 +409,7 @@ const EcoEducationPlatform = () => {
           </div>
           <button 
             onClick={() => addEcoPoints(20)}
-            className="mt-6 w-full px-4 py-2 bg-blue-600 text-gray-800 rounded-lg hover:bg-blue-700 transition-colors"
+            className="mt-6 w-full px-4 py-2 bg-blue-600 text-amber-50 rounded-lg hover:bg-blue-800 transition-colors"
           >
             Access Teacher Resources (+20 points)
           </button>
@@ -436,7 +436,7 @@ const EcoEducationPlatform = () => {
           </div>
           <button 
             onClick={() => addEcoPoints(15)}
-            className="mt-6 w-full px-4 py-2 bg-green-600 text-gray-800 rounded-lg hover:bg-green-700 transition-colors"
+            className="mt-6 w-full px-4 py-2 bg-green-600 text-amber-50 rounded-lg hover:bg-green-800 transition-colors"
           >
             Start Learning (+15 points)
           </button>
@@ -486,7 +486,7 @@ const EcoEducationPlatform = () => {
               <p className="text-purple-600 text-sm mt-1">Nov 5-15, 2025 • Submit your green innovations</p>
               <button 
                 onClick={() => addEcoPoints(30)}
-                className="mt-2 px-4 py-2 bg-purple-600 text-gray-800 rounded-lg hover:bg-purple-700 transition-colors"
+                className="mt-2 px-4 py-2 bg-purple-600 text-amber-50 rounded-lg hover:bg-purple-800 transition-colors"
               >
                 Join Contest (+30 points)
               </button>
@@ -497,7 +497,7 @@ const EcoEducationPlatform = () => {
         <div className="bg-white rounded-xl shadow-md p-6">
           <h3 className="text-xl font-semibold text-gray-800 mb-6">Organize Events</h3>
           <p className="text-gray-600 mb-4">Want to organize your own environmental event? We provide tools and support!</p>
-          <button className="px-6 py-3 bg-teal-600 text-gray-800 rounded-lg hover:bg-teal-700 transition-colors">
+          <button className="px-6 py-3 bg-teal-600 text-amber-50 rounded-lg hover:bg-teal-800 transition-colors">
             Create Event
           </button>
         </div>
@@ -599,7 +599,7 @@ const EcoEducationPlatform = () => {
           </div>
           <button 
             onClick={() => addEcoPoints(25)}
-            className="w-full px-4 py-2 bg-blue-600 text-gray-800 rounded-lg hover:bg-blue-700 transition-colors"
+            className="w-full px-4 py-2 bg-blue-600 text-amber-50 rounded-lg hover:bg-blue-800 transition-colors"
           >
             Get Involved (+25 points)
           </button>
@@ -614,7 +614,7 @@ const EcoEducationPlatform = () => {
             <div className="text-sm text-gray-500">• Educational scholarships</div>
             <div className="text-sm text-gray-500">• Conservation efforts</div>
           </div>
-          <button className="w-full px-4 py-2 bg-red-600 text-gray-800 rounded-lg hover:bg-red-700 transition-colors">
+          <button className="w-full px-4 py-2 bg-red-600 text-amber-50 rounded-lg hover:bg-red-800 transition-colors">
             Donate Now
           </button>
         </div>
@@ -628,7 +628,7 @@ const EcoEducationPlatform = () => {
             <div className="text-sm text-gray-500">• Event promotion</div>
             <div className="text-sm text-gray-500">• Resource sharing</div>
           </div>
-          <button className="w-full px-4 py-2 bg-green-600 text-gray-800 rounded-lg hover:bg-green-700 transition-colors">
+          <button className="w-full px-4 py-2 bg-green-600 text-amber-50 rounded-lg hover:bg-green-800 transition-colors">
             Start Planning
           </button>
         </div>
@@ -849,7 +849,7 @@ const EcoEducationPlatform = () => {
               </div>
             </div>
             <div>
-              <button className="w-full px-6 py-3 bg-blue-600 text-gray-800 rounded-lg hover:bg-blue-700 transition-colors mb-3">
+              <button className="w-full px-6 py-3 bg-blue-600 text-amber-50 rounded-lg hover:bg-blue-800 transition-colors mb-3">
                 Send Message
               </button>
               <button className="w-full px-6 py-3 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition-colors">
