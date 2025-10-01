@@ -30,6 +30,7 @@ import {
   X
 } from 'lucide-react';
 import { motion } from "framer-motion";
+import Videos from './Videos';
 //import { Card, CardContent } from "@/components/ui/card";
 //import { Button } from "@/components/ui/button";
 
@@ -37,29 +38,17 @@ const EcoEducationPlatform = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const [ecoPoints, setEcoPoints] = useState(0);
-  const [currentSlide, setCurrentSlide] = useState(0);
   const [activeSection, setActiveSection] = useState('home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const [floatingLeaves, setFloatingLeaves] = useState([]);
+  // const [floatingLeaves, setFloatingLeaves] = useState([]);
 
   const [currentQ, setCurrentQ] = useState(0);
   const [score, setScore] = useState(0);
   const [completed, setCompleted] = useState(false);
   const [showQuiz, setShowQuiz] = useState(false);
 
-
-  // Floating leaves animation
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setFloatingLeaves((prev) => [
-        ...prev,
-        { id: Date.now(), x: Math.random() * 100 },
-      ]);
-    }, 2000);
-    return () => clearInterval(interval);
-  }, []);
-
+  const [videosPage,setVideosPage] = useState(false);
 
   // Sample data
   const carouselItems = [
@@ -98,13 +87,6 @@ const EcoEducationPlatform = () => {
     { id: 'about', label: 'About Us', icon: Info },
     { id: 'leaderboard', label: 'Leaderboard', icon: Trophy }
   ];
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % carouselItems.length);
-    }, 4000);
-    return () => clearInterval(timer);
-  }, []);
 
   const handleLogin = () => {
     setIsLoggedIn(true);
@@ -147,7 +129,7 @@ const EcoEducationPlatform = () => {
                     setActiveSection(item.id);
                     setMobileMenuOpen(false);
                   }}
-                  className={`flex items-center space-x-1 px-3 py-2 rounded-md transition-colors bg-amber-50 text-teal-600 text-sm ${
+                  className={`flex items-center space-x-1 px-3 py-2 rounded-md transition-colors ${item.label==="EcoPlay"? "bg-gradient-to-br from-blue-200 to-blue-500 text-amber-50":"bg-amber-50 text-teal-600"} text-sm ${
                     activeSection === item.id ? 'active:bg-teal-200' : 'hover:opacity-50'
                   }`}
                 >
@@ -172,7 +154,7 @@ const EcoEducationPlatform = () => {
                 <span className="hidden md:inline">{currentUser?.name}</span>
                 <button
                   onClick={handleLogout}
-                  className="ml-2 px-3 py-1 text-teal-600 bg-red-400 hover:bg-red-600 rounded-md text-sm transition-colors">
+                  className="ml-2 px-3 py-1 text-amber-50 bg-red-600 hover:bg-red-400 rounded-md text-sm transition-colors">
                   Logout
                 </button>
               </div>
@@ -225,7 +207,17 @@ const EcoEducationPlatform = () => {
     </nav>
   );
 
-  const Carousel = () => (
+  const Carousel = () => {
+    const [currentSlide, setCurrentSlide] = useState(0);
+
+    useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % carouselItems.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
+    return(
     <div className="relative bg-gradient-to-r from-emerald-50 to-teal-50 rounded-xl p-6 mb-8 overflow-hidden shadow-xl">
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-lg font-semibold text-gray-800">Daily Eco Facts</h3>
@@ -271,7 +263,7 @@ const EcoEducationPlatform = () => {
         ))}
       </div>
     </div>
-  );
+  );};
 
   const GameCard = ({ title, description, points, difficulty, onClick }) => (
     <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-6 cursor-pointer transform hover:scale-105"
@@ -349,22 +341,22 @@ const EcoEducationPlatform = () => {
         <div className="lg:col-span-2">
           <h3 className="text-2xl font-semibold text-gray-800 mb-6">Platform Features</h3>
           <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-xl shadow-xl">
+            <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
               <BookOpen className="w-8 h-8 text-green-600 mb-3" />
               <h4 className="font-semibold text-gray-800 mb-2">Interactive Learning</h4>
               <p className="text-gray-600">Engage with immersive environmental education content and earn points</p>
             </div>
-            <div className="bg-gradient-to-br from-blue-50 to-teal-50 p-6 rounded-xl shadow-xl">
+            <div className="bg-gradient-to-br from-blue-50 to-teal-50 p-6 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
               <Users className="w-8 h-8 text-blue-600 mb-3" />
               <h4 className="font-semibold text-gray-800 mb-2">Community Events</h4>
               <p className="text-gray-600">Join workshops, webinars, and eco-challenges with other learners</p>
             </div>
-            <div className="bg-gradient-to-br from-purple-50 to-indigo-50 p-6 rounded-xl shadow-xl">
+            <div className="bg-gradient-to-br from-purple-50 to-indigo-50 p-6 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
               <Award className="w-8 h-8 text-purple-600 mb-3" />
               <h4 className="font-semibold text-gray-800 mb-2">Gamification</h4>
               <p className="text-gray-600">Collect points, badges, and certificates as you learn</p>
             </div>
-            <div className="bg-gradient-to-br from-yellow-50 to-orange-50 p-6 rounded-xl shadow-xl">
+            <div className="bg-gradient-to-br from-yellow-50 to-orange-50 p-6 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
               <Gamepad2 className="w-8 h-8 text-yellow-600 mb-3" />
               <h4 className="font-semibold text-gray-800 mb-2">Interactive Games</h4>
               <p className="text-gray-600">Play educational games and compete with other eco-warriors</p>
@@ -383,7 +375,10 @@ const EcoEducationPlatform = () => {
     <div className="space-y-8">
       <h2 className="text-3xl font-bold text-gray-800">Learning Hub</h2>
       
-      <div className="grid md:grid-cols-2 gap-8">
+      {!videosPage?
+        (
+        <>
+        <div className="grid md:grid-cols-2 gap-8">
         <div className="bg-white rounded-xl shadow-md p-6">
           <h3 className="text-xl font-semibold text-gray-800 mb-4 flex items-center">
             <Users className="w-5 h-5 mr-2 text-blue-600" />
@@ -422,8 +417,10 @@ const EcoEducationPlatform = () => {
           </h3>
           <div className="space-y-4">
             <div className="p-4 bg-green-50 rounded-lg">
-              <h4 className="font-semibold text-green-800 mb-2">Interactive Modules</h4>
+              {/* <h4 className="font-semibold text-green-800 mb-2">Interactive Modules</h4> */}
+              <button onClick={()=>{setVideosPage(true);}} className="font-semibold bg-green-400 hover:bg-green-200 rounded-md shadow-md text-green-800 px-3 mb-2 no-underline">Interactive Modules</button>
               <p className="text-green-600 text-sm">Engaging learning modules with multimedia content</p>
+              <p className='text-red-500 text-sm'>(Available Feature)</p>
             </div>
             <div className="p-4 bg-green-50 rounded-lg">
               <h4 className="font-semibold text-green-800 mb-2">Certification Courses</h4>
@@ -442,6 +439,18 @@ const EcoEducationPlatform = () => {
           </button>
         </div>
       </div>
+      </>
+      ):(
+        <>
+        <button className='px-4 py-2 text-amber-50 bg-blue-600 rounded-lg hover:bg-blue-400' onClick={()=>{setVideosPage(false);}}>
+        Back
+        </button>
+        {videosPage && <Videos
+        videosPage = {videosPage}
+        />}
+        </>
+      )
+      }
     </div>
   );
 
@@ -652,6 +661,16 @@ const EcoEducationPlatform = () => {
         question: "Which of these helps reduce your carbon footprint?",
         options: ["Eating more red meat", "Using energy-efficient appliances", "Flying frequently", "Leaving lights on"],
         answer: 1
+      },
+      {
+        question: "What is the primary unit used to express a carbon footprint?",
+        options: ["Kilograms of oxygen released", "Metric tons of solid waste", "Liters of water consumed", "Total CO2 equivalents (CO2e)"],
+        answer: 3
+      },
+      {
+        question: "What does a carbon offset typically represent?",
+        options: ["Money donated to a recycling program", "A fine paid for high emissions", "A reduction in CO2 made elsewhere to compensate for your own", "A government-mandated limit on emissions"],
+        answer: 2
       }
     ];
     const handleAnswer = (index) => {
@@ -713,7 +732,7 @@ const EcoEducationPlatform = () => {
                 setScore(0);
                 setCompleted(false);
               }}
-              className="px-4 py-2 bg-blue-600 text-gray-600 rounded-lg hover:bg-blue-700"
+              className="px-4 py-2 bg-blue-600 text-amber-50 rounded-lg hover:bg-blue-700"
             >
               Retry Quiz
             </button>
@@ -884,13 +903,13 @@ const EcoEducationPlatform = () => {
           <h3 className="text-xl font-semibold text-gray-800 mb-4">Encourage Us</h3>
           <p className="text-gray-600 mb-4">Help us spread environmental awareness and education worldwide. Your support makes a difference!</p>
           <div className="flex flex-wrap gap-3">
-            <button className="px-4 py-2 bg-green-600 text-gray-800 rounded-lg hover:bg-green-700 transition-colors">
+            <button className="px-4 py-2 bg-green-600 text-amber-50 rounded-lg hover:bg-green-700 transition-colors">
               Share Our Mission
             </button>
-            <button className="px-4 py-2 bg-blue-600 text-gray-800 rounded-lg hover:bg-blue-700 transition-colors">
+            <button className="px-4 py-2 bg-blue-600 text-amber-50 rounded-lg hover:bg-blue-700 transition-colors">
               Volunteer
             </button>
-            <button className="px-4 py-2 bg-purple-600 text-gray-800 rounded-lg hover:bg-purple-700 transition-colors">
+            <button className="px-4 py-2 bg-purple-600 text-amber-50 rounded-lg hover:bg-purple-700 transition-colors">
               Partner With Us
             </button>
           </div>
@@ -1012,16 +1031,22 @@ const EcoEducationPlatform = () => {
         return <HomeSection />;
     }
   };
+  const FloatingLeavescomp = () => {
+    const [floatingLeaves,setFloatingLeaves] = useState([]);
 
-  //bg-[url('environment.jpg')] bg-cover bg-bottom
-//bg-gradient-to-br from-slate-50 to-emerald-50
-  return (
-    <div className="bg-gradient-to-br from-slate-50 to-emerald-50">
-      <NavBar />
-      <main className="mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Floating Leaves */}
-        {floatingLeaves.map((leaf) => (
-        <div>
+    useEffect(() => {
+    const interval = setInterval(() => {
+      setFloatingLeaves((prev) => [
+        ...prev,
+        { id: Date.now(), x: Math.random() * 100 },
+      ]);
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
+
+    return(
+      floatingLeaves.map((leaf) => (
+        <>
         <motion.div
           key={leaf.id}
           initial={{ y: -50, x: `${leaf.x}%`, opacity: 1 }}
@@ -1058,8 +1083,19 @@ const EcoEducationPlatform = () => {
         >
           🍃
         </motion.div>
-        </div>
-      ))}
+        </>
+      ))
+    );
+  };
+
+  //bg-[url('environment.jpg')] bg-cover bg-bottom
+//bg-gradient-to-br from-slate-50 to-emerald-50
+  return (
+    <div className="bg-gradient-to-br from-blue-100 to-emerald-400">
+      <NavBar />
+      <main className="mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Floating Leaves */}
+        <FloatingLeavescomp />
         {renderActiveSection()}
       </main>
       <footer className="bg-gray-800 text-white py-8 mt-16">

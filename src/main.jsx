@@ -5,7 +5,5 @@ import EcoEducationPlatform from './EcoEducationPlatform.jsx'
 //import { Copy } from 'lucide-react'
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <EcoEducationPlatform />
-  </StrictMode>,
+  <EcoEducationPlatform />
 )
