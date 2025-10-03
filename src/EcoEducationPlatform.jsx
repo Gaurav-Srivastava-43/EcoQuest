@@ -768,7 +768,7 @@ const EcoEducationPlatform = () => {
             {/* 🔹 Preserve your original EcoPlay content */}
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               <GameCard
-                title="Carbon Footprint Quiz"
+                title="Carbon Footprint Quiz (Available Feature)"
                 description="Test your knowledge about reducing carbon emissions and learn sustainable practices"
                 points={25}
                 difficulty="Easy"
@@ -1076,7 +1076,7 @@ const EcoEducationPlatform = () => {
         </motion.div>
         <motion.div
           key={leaf.id}
-          initial={{ y: -50, x: "90vw", opacity: 1 }}
+          initial={{ y: -50, x: "85vw", opacity: 1 }}
           animate={{ y: "110vh", opacity: 0 }}
           transition={{ duration: 8, ease: "easeIn" }}
           className="absolute text-2xl"
