@@ -35,7 +35,7 @@ const Videos = ({videosPage}) => {
             duration : "1 min 51 sec",
             source : "EcoQuest",
             isWatched : false,
-            vlink : "Water_Scarcity_Video.mp4"
+            vlink : "src\\assets\\Water_Scarcity_Video.mp4"
         }
     ];
 

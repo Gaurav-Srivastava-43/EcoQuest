@@ -31,6 +31,7 @@ import {
 } from 'lucide-react';
 import { motion } from "framer-motion";
 import Videos from './Videos';
+import Chatbox from './components/Chatbox';
 //import { Card, CardContent } from "@/components/ui/card";
 //import { Button } from "@/components/ui/button";
 
@@ -105,21 +106,19 @@ const EcoEducationPlatform = () => {
   };
 
    const NavBar = () => (
-    <nav className= "min-h-20 bg-gradient-to-r from-teal-600 to-emerald-600 text-white shadow-xl sticky top-0 z-50">
+    <nav className= "min-h-fit bg-gradient-to-r from-teal-600 to-emerald-600 text-white shadow-xl sticky p-2 top-0 z-50">
       <div className="h-full mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
+        <div className="flex justify-between gap-2 lg:flex-wrap">
           <div className="flex items-center space-x-4">
-            {/* <Leaf className="w-8 h-8" /> */}
-            {/* moz-todo-react\src\EcoQuestLogo.png */}
-            <img src="EcoQuestLogo.png" class="w-16 h-16 bg-amber-50 rounded-full" />
+            <img src="EcoQuestLogo.png" className="w-12 h-12 lg:w-16 lg:h-16 bg-amber-50 rounded-full" />
             <div>
-              <span className="text-xl font-bold">EcoQuest</span>
-              <div className="text-sm text-teal-200">Learn. Play. Act. Protect.</div>
+              <span className="text-lg lg:text-xl font-bold">EcoQuest</span>
+              <div className="text-xs lg:text-sm text-teal-200">Learn. Play. Act. Protect.</div>
             </div>
           </div>
           
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-1">
+          <div className="hidden lg:flex items-center space-x-1 gap-1">
             {navigationItems.map((item) => {
               const IconComponent = item.icon;
               return (
@@ -141,33 +140,7 @@ const EcoEducationPlatform = () => {
           </div>
 
           {/* User Section */}
-          <div className="flex items-center space-x-4">
-            {isLoggedIn && (
-              <div className="flex items-center space-x-2 bg-white/20 px-3 py-1 rounded-full">
-                <Leaf className="w-4 h-4 text-green-300" />
-                <span className="font-semibold">{ecoPoints}</span>
-              </div>
-            )}
-            {isLoggedIn ? (
-              <div className="flex items-center space-x-2">
-                <User className="w-6 h-6" />
-                <span className="hidden md:inline">{currentUser?.name}</span>
-                <button
-                  onClick={handleLogout}
-                  className="ml-2 px-3 py-1 text-amber-50 bg-red-600 hover:bg-red-400 rounded-md text-sm transition-colors">
-                  Logout
-                </button>
-              </div>
-            ) : (
-              <button
-                onClick={handleLogin}
-                className="flex items-center space-x-1 px-4 py-2 bg-white text-teal-600 rounded-md hover:bg-gray-50 transition-colors"
-              >
-                <LogIn className="w-4 h-4" />
-                <span>Login</span>
-              </button>
-            )}
-
+          <div className="flex flex-col justify-center self-end items-end">
             {/* Mobile menu button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -175,6 +148,34 @@ const EcoEducationPlatform = () => {
             >
               {mobileMenuOpen ? <X className="w-6 h-6 text-amber-50" /> : <Menu className="w-6 h-6 text-amber-50s" />}
             </button>
+            <div className="flex justify-end">
+              {isLoggedIn && (
+              <div className="flex items-center space-x-2 bg-white/20 px-3 py-1 rounded-full">
+                <Leaf className="w-4 h-4 text-green-300" />
+                <span className="font-semibold">{ecoPoints}</span>
+              </div>
+              )}
+              {isLoggedIn ? (
+                <div className="flex justify-end items-center">
+                  <User className="w-6 h-6" />
+                  <span className="hidden md:inline">{currentUser?.name}</span>
+                  <button
+                    onClick={handleLogout}
+                    className="ml-2 px-3 py-1 text-amber-50 bg-red-600 hover:bg-red-400 rounded-md text-sm transition-colors">
+                    Logout
+                  </button>
+                </div>
+              ) : (
+                <button
+                  onClick={handleLogin}
+                  className="flex items-center space-x-1 px-3 py-1 bg-white text-teal-600 rounded-md hover:bg-gray-50 transition-colors"
+                >
+                  <LogIn className="w-4 h-4" />
+                  <span>Login</span>
+                </button>
+              )}
+              </div>
+            
           </div>
         </div>
 
@@ -1057,7 +1058,7 @@ const EcoEducationPlatform = () => {
           🍃
         </motion.div>
         <motion.div
-          key={leaf.id}
+          key={leaf.id * 0.1}
           initial={{ y: -50, x: "30vw" , opacity: 1 }}
           animate={{ y: "110vh", opacity: 0 }}
           transition={{ duration: 8, ease: "easeIn" }}
@@ -1066,7 +1067,7 @@ const EcoEducationPlatform = () => {
           🍀
         </motion.div>
         <motion.div
-          key={leaf.id}
+          key={leaf.id * 0.2}
           initial={{ y: -50, x:"60vw" , opacity: 1 }}
           animate={{ y: "110vh", opacity: 0 }}
           transition={{ duration: 8, ease: "easeIn" }}
@@ -1075,7 +1076,7 @@ const EcoEducationPlatform = () => {
           🍀	
         </motion.div>
         <motion.div
-          key={leaf.id}
+          key={leaf.id * 0.3}
           initial={{ y: -50, x: "85vw", opacity: 1 }}
           animate={{ y: "110vh", opacity: 0 }}
           transition={{ duration: 8, ease: "easeIn" }}
@@ -1099,6 +1100,7 @@ const EcoEducationPlatform = () => {
         {renderActiveSection()}
       </main>
       <footer className="bg-gray-800 text-white py-8 mt-16">
+        <Chatbox/>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-8">
             <div>
